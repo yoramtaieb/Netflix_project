@@ -40,11 +40,13 @@ import Header from "./components/Header.mjs";
     let movies = await fetchNetflixOriginals();
     movies = movies.results
 
-    let netflixOriginals = document.getElementsByClassName("movies-container")[0]
+    let netflixOriginals = document.getElementsByClassName("movies__container--movie__netflix")[0]
+    console.log(netflixOriginals)
     for(let i = 0; i < movies.length; i++){
         
-        netflixOriginals += `<div class="movies__container--movie__netflix">
-        <img src="https://image.tmdb.org/t/p/original//${movies[i].poster_path}" class="movies__container--movie-image"/></div>`
-        console.log(movies[i])
+        netflixOriginals.innerHTML += `
+            <img src="https://image.tmdb.org/t/p/original//${movies[i].poster_path}" class="movies__container--movie-image"/>
+            `
+        console.log(movies[i].poster_path)
     }
 })();
