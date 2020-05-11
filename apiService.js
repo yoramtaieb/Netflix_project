@@ -50,9 +50,10 @@ export async function fetchMovie(movieId) {
 
 export async function fetchNetflixOriginals() {
     const url = `https://api.themoviedb.org/3/discover/tv?api_key=617f779f9850bfb3355824689e154920&with_networks=213`;
-    let res = await fetch(url).then(response => {
-        console.log(response)
-    })
+    let res = await fetch(url);
+    let movies = await res.json();
+   return movies;
+    
 }
 
 export function fetchTrending() {}

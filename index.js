@@ -37,5 +37,6 @@ import Header from "./components/Header.mjs";
     document.getElementById("header").innerHTML = Header(movie);
     document.getElementById("header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`;
 
-    fetchNetflixOriginals()
+    let movies = await fetchNetflixOriginals();
+    console.log(movies)
 })();
