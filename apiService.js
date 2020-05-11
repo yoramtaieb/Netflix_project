@@ -40,16 +40,19 @@ const API_KEY = "2997c5290abfb556adf35db19e36cc28";
 // }
 
 // 3
-export default async function fetchMovie(movieId) {
+export async function fetchMovie(movieId) {
     const url = `https://api.themoviedb.org/3/movie/99?api_key=617f779f9850bfb3355824689e154920&language=fr-FR%27`;
     let res = await fetch(url);
     let movie = await res.json();
-    console.log(movie);
+    //console.log(movie);
     return movie;
 }
 
-export function fetchNetflixOriginals() {
-    const url = `/discover/tv?api_key=${API_KEY}&with_networks=213`;
+export async function fetchNetflixOriginals() {
+    const url = `https://api.themoviedb.org/3/discover/tv?api_key=617f779f9850bfb3355824689e154920&with_networks=213`;
+    let res = await fetch(url).then(response => {
+        console.log(response)
+    })
 }
 
 export function fetchTrending() {}
