@@ -47,6 +47,8 @@ import Header from "./components/Header.mjs";
         netflixOriginals.innerHTML += `
             <img src="https://image.tmdb.org/t/p/original//${movies[i].poster_path}" class="movies__container--movie-image"/>
             `
+        netflixOriginals.style.overflow = "auto"
+        netflixOriginals.style.display = "flex"
         console.log(movies[i].poster_path)
     }
 })();
