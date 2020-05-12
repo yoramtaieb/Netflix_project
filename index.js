@@ -1,4 +1,4 @@
-import {fetchMovie, fetchNetflixOriginals, fetchTrending, fetchTopRated, fetchByGenreMovies}  from "./apiService.js";
+import { fetchMovie, fetchNetflixOriginals, fetchTrending, fetchTopRated, fetchByGenreMovies } from "./apiService.js";
 import Header from "./components/Header.mjs";
 
 (async() => {
@@ -11,12 +11,12 @@ import Header from "./components/Header.mjs";
     moviesOriginals = moviesOriginals.results
 
     let netflixOriginals = document.getElementsByClassName("movies__container--movie__netflix")[0]
-    // console.log(netflixOriginals)
-    for(let i = 0; i < moviesOriginals.length; i++){
+        // console.log(netflixOriginals)
+    for (let i = 0; i < moviesOriginals.length; i++) {
         netflixOriginals.innerHTML += `
             <img src="https://image.tmdb.org/t/p/original//${moviesOriginals[i].poster_path}" class="movies__container--movie-image"/>
             `
-        // console.log(movies[i].poster_path)
+            // console.log(movies[i].poster_path)
     }
     netflixOriginals.style.overflow = "auto"
     netflixOriginals.style.display = "flex"
@@ -30,8 +30,8 @@ import Header from "./components/Header.mjs";
     let moviesContainer = document.getElementsByClassName("movies__container--movie")
     let trending = moviesContainer[0]
     let topRated = moviesContainer[1]
-    // console.log(trending)
-    for(let i = 0; i < moviesTrending.length; i++){
+        // console.log(trending)
+    for (let i = 0; i < moviesTrending.length; i++) {
         // console.log(moviesTrending[i])
         trending.innerHTML += `
         <img src="https://image.tmdb.org/t/p/original//${moviesTrending[i].backdrop_path}" class="movies__container--movie-image"/>
@@ -40,7 +40,7 @@ import Header from "./components/Header.mjs";
     trending.style.overflow = "auto"
     trending.style.display = "flex"
 
-    for(let i = 0; i < moviesTopRated.length; i++){
+    for (let i = 0; i < moviesTopRated.length; i++) {
         // console.log(moviesTopRated[i])
         topRated.innerHTML += `
         <img src="https://image.tmdb.org/t/p/original//${moviesTopRated[i].backdrop_path}" class="movies__container--movie-image"/>
@@ -49,14 +49,19 @@ import Header from "./components/Header.mjs";
     topRated.style.overflow = "auto"
     topRated.style.display = "flex"
 
-    let genre = await fetchByGenreMovies();
-    genre = genre.genres
+    let movieGenreActions = await fetchByGenreMovies(28)
+    let movieGenreComedy = await fetchByGenreMovies(35)
+    let movieGenreDocumentary = await fetchByGenreMovies(99)
+    console.log(movieGenreActions)
+    let actionsMovie = moviesContainer[2]
+    let comediesMovie = moviesContainer[3]
+    let documentaryMovie = moviesContainer[4]
+    console.log(actionsMovie)
 
-    // console.log(genre)
-
-    for(let i = 0; i < genre.length; i++){
-        console.log(genre[i].name)
-
+    for (let i = 0; i < movieGenreActions.length; i++) {
+        console.log(movieGenreActions)
+        actionsMovie.innerHTML += ` 
+        <img src="https://image.tmdb.org/t/p/original//${movieGenreActions[i].backdrop_path}" class="movies__container--movie-image"/>`
     }
 
 })();

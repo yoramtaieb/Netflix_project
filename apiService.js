@@ -14,7 +14,7 @@ export async function fetchNetflixOriginals() {
     let res = await fetch(url);
     let movies = await res.json();
     return movies;
-    
+
 }
 
 export async function fetchTrending() {
@@ -32,7 +32,7 @@ export async function fetchTopRated() {
 }
 
 export async function fetchByGenreMovies(genre) {
-    const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=617f779f9850bfb3355824689e154920`
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=617f779f9850bfb3355824689e154920&with_genres=${genre}`
     let res = await fetch(url);
     let genreMovies = await res.json();
     return genreMovies;
