@@ -1,0 +1,43 @@
+.container-model {
+    background-color: blue;
+    color: white;
+    height: 350px;
+    width: 100%;
+    // display: none;
+
+    .containerInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: lightseagreen;
+        height: 100%;
+        width: 50%;
+        row-gap: 5em;
+
+        h3 {
+            font-size: 3rem;
+            padding-bottom: 0.5%;
+        }
+
+        .rating {
+            color: green;
+            font-size: 1.5rem;
+            padding-bottom: 0.5%;
+        }
+
+        p {
+            font-size: 1rem;
+
+        }
+
+        .containerButtons {
+
+            button {
+
+            }
+        }
+
+    }
+
+}
+
