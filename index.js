@@ -8,12 +8,12 @@ import Header from "./components/Header.mjs";
 
     let moviesOriginals = await fetchNetflixOriginals();
     moviesOriginals = moviesOriginals.results
-
+  
     let netflixOriginals = document.getElementsByClassName("movies__container--movie__netflix")[0]
     // récupérer les résultats de la section Netflix Originals
     for (let i = 0; i < moviesOriginals.length; i++) {
         netflixOriginals.innerHTML += `
-            <img src="https://image.tmdb.org/t/p/original//${moviesOriginals[i].poster_path}" class="movies__container--movie-image"/>
+            <img data-key-id=${moviesOriginals[i].id} src="https://image.tmdb.org/t/p/original//${moviesOriginals[i].poster_path}" class="movies__container--movie-image"/>
             `
     }
     netflixOriginals.style.overflow = "auto"
@@ -44,7 +44,7 @@ import Header from "./components/Header.mjs";
     // récupérer les résultats de la section "Trending Now"
     for (let i = 0; i < moviesTrending.length; i++) {
         trending.innerHTML += `
-        <img src="https://image.tmdb.org/t/p/original//${moviesTrending[i].backdrop_path}" class="movies__container--movie-image"/>
+        <img data-key-id=${moviesTrending[i].id} src="https://image.tmdb.org/t/p/original//${moviesTrending[i].backdrop_path}" class="movies__container--movie-image"/>
         `
     }
     trending.style.overflow = "auto"
@@ -53,36 +53,39 @@ import Header from "./components/Header.mjs";
     // récupérer les résultats de la section "Top Rated"
     for (let i = 0; i < moviesTopRated.length; i++) {
         topRated.innerHTML += `
-        <img src="https://image.tmdb.org/t/p/original//${moviesTopRated[i].backdrop_path}" class="movies__container--movie-image"/> `
+        <img data-key-id=${moviesTopRated[i].id} src="https://image.tmdb.org/t/p/original//${moviesTopRated[i].backdrop_path}" class="movies__container--movie-image"/> `
     }
     topRated.style.overflow = "auto"
     topRated.style.display = "flex"
 
     // récupérer les résultats des films de genre Action
     for (let i = 0; i < movieGenreActions.length; i++) {
-        console.log(movieGenreActions)
+        // console.log(movieGenreActions)
         actionsMovie.innerHTML += ` 
-        <img src="https://image.tmdb.org/t/p/original//${movieGenreActions[i].backdrop_path}" class="movies__container--movie-image"/>`
+        <img data-key-id=${movieGenreActions[i].id} src="https://image.tmdb.org/t/p/original//${movieGenreActions[i].backdrop_path}" class="movies__container--movie-image"/>`
     }
     actionsMovie.style.overflow = "auto"
     actionsMovie.style.display = "flex"
 
     // récupérer les résultats des films de genre Comedy
     for (let i = 0; i < movieGenreComedy.length; i++) {
-        console.log(movieGenreComedy)
+        // console.log(movieGenreComedy)
         comediesMovie.innerHTML += ` 
-        <img src="https://image.tmdb.org/t/p/original//${movieGenreComedy[i].backdrop_path}" class="movies__container--movie-image"/>`
+        <img data-key-id=${movieGenreComedy[i].id} src="https://image.tmdb.org/t/p/original//${movieGenreComedy[i].backdrop_path}" class="movies__container--movie-image"/>`
     }
     comediesMovie.style.overflow = "auto"
     comediesMovie.style.display = "flex"
 
     // récupérer les résultats des films de genre Documentary
     for (let i = 0; i < movieGenreDocumentary.length; i++) {
-        console.log(movieGenreDocumentary)
+        // console.log(movieGenreDocumentary)
         documentaryMovie.innerHTML += ` 
-        <img src="https://image.tmdb.org/t/p/original//${movieGenreDocumentary[i].backdrop_path}" class="movies__container--movie-image"/>`
+        <img data-key-id=${movieGenreDocumentary[i].id} src="https://image.tmdb.org/t/p/original//${movieGenreDocumentary[i].backdrop_path}" class="movies__container--movie-image"/>`
     }
     documentaryMovie.style.overflow = "auto"
     documentaryMovie.style.display = "flex"
+
+
+
 
 })();
