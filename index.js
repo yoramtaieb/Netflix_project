@@ -92,7 +92,7 @@ import Header from "./components/Header.mjs";
         elem.addEventListener('click', async function() {
             let id = this.getAttribute("data-key-id")
             let movie = await fetchMovie(id).then(result => result)
-            console.log(movie)
+
         })
     })
 
