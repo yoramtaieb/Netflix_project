@@ -8,9 +8,9 @@ import Header from "./components/Header.mjs";
 
     let moviesOriginals = await fetchNetflixOriginals();
     moviesOriginals = moviesOriginals.results
-  
+
     let netflixOriginals = document.getElementsByClassName("movies__container--movie__netflix")[0]
-    // récupérer les résultats de la section Netflix Originals
+        // récupérer les résultats de la section Netflix Originals
     for (let i = 0; i < moviesOriginals.length; i++) {
         netflixOriginals.innerHTML += `
             <img data-key-id=${moviesOriginals[i].id} src="https://image.tmdb.org/t/p/original//${moviesOriginals[i].poster_path}" class="movies__container--movie-image"/>
@@ -85,7 +85,16 @@ import Header from "./components/Header.mjs";
     documentaryMovie.style.overflow = "auto"
     documentaryMovie.style.display = "flex"
 
+    let images = Array.from(document.querySelectorAll('.movies__container--movie-image'))
+        // console.log(images)
 
+    images.map(elem => {
+        elem.addEventListener('click', async function() {
+            let id = this.getAttribute("data-key-id")
+            let movie = await fetchMovie(id).then(result => result)
+            console.log(movie)
+        })
+    })
 
 
 })();
