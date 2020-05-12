@@ -31,4 +31,9 @@ export async function fetchTopRated() {
     return topRated;
 }
 
-export function fetchByGenreMovies(genre) {}
+export async function fetchByGenreMovies(genre) {
+    const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=617f779f9850bfb3355824689e154920`
+    let res = await fetch(url);
+    let genreMovies = await res.json();
+    return genreMovies;
+}
