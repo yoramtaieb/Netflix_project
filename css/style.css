@@ -213,6 +213,9 @@ html {
         padding-right: 0.5rem; }
       .movies__container--movie-image {
         height: 100%; }
+      .movies__container--movie-image:hover {
+        transform: scale(1.3);
+        transition-duration: 0.5s; }
       .movies__container--movie__netflix {
         min-height: 0;
         padding-top: 3rem;
