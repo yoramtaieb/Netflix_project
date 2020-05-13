@@ -16,15 +16,20 @@ import Header from "./components/Header.mjs";
 
         if(typeImg == 'poster'){
             for(let i = 0; i < movies.length; i++){
-                htmlElemnt.innerHTML += `
+                
+                if(movies[i].id != 'null'){
+                    htmlElemnt.innerHTML += `
                     <img data-key-id=${movies[i].id} src="https://image.tmdb.org/t/p/original//${movies[i].poster_path}" class="movies__container--movie-image"/>
                 `
+                }
             }
         }else if(typeImg == 'backdrop'){
             for(let i = 0; i < movies.length; i++){
-                htmlElemnt.innerHTML += `
+                if(movies[i].id != 'null'){
+                    htmlElemnt.innerHTML += `
                     <img data-key-id=${movies[i].id} src="https://image.tmdb.org/t/p/original//${movies[i].backdrop_path}" class="movies__container--movie-image"/>
                 `
+                }
             }
         }
         o++
