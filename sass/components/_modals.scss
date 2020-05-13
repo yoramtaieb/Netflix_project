@@ -1,18 +1,21 @@
 .container-model {
-    background: purple;
+    // background-image: url('https://i.ytimg.com/vi/rRuE45BjSL0/maxresdefault.jpg');
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 48%, rgba(0, 0, 0, 0.7200956937799043) 91%, rgba(0, 0, 0, 0.7200956937799043) 100%);
     color: white;
     height: 350px;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    // display: none;
     .containerInfo {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         padding-top: 4rem;
-        background-color: black;
         height: 100%;
         width: 50%;
         row-gap: 1.5em;
@@ -36,6 +39,7 @@
             border-radius: 2px;
             margin-right: 10px;
             padding: 7px 15px;
+            cursor: pointer;
         }
         #buttonPlus {
             color: white;
@@ -43,13 +47,14 @@
             border: 1px solid rgba(255, 255, 255, 0.427);
             border-radius: 2px;
             padding: 7px 15px;
+            cursor: pointer;
         }
         .fas {
             padding-right: 6px;
         }
     }
-
     .buttonCross {
         margin: 10px;
+        cursor: pointer;
     }
 }

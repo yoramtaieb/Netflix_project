@@ -230,7 +230,8 @@ html {
             height: 34rem; } }
 
 .container-model {
-  background: purple;
+  background: black;
+  background: linear-gradient(90deg, black 48%, rgba(0, 0, 0, 0.7200956938) 91%, rgba(0, 0, 0, 0.7200956938) 100%);
   color: white;
   height: 350px;
   width: 100%;
@@ -242,7 +243,6 @@ html {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 4rem;
-    background-color: black;
     height: 100%;
     width: 50%;
     row-gap: 1.5em; }
@@ -261,16 +261,19 @@ html {
       border: 1px solid red;
       border-radius: 2px;
       margin-right: 10px;
-      padding: 7px 15px; }
+      padding: 7px 15px;
+      cursor: pointer; }
     .container-model .containerInfo #buttonPlus {
       color: white;
       background-color: black;
       border: 1px solid rgba(255, 255, 255, 0.427);
       border-radius: 2px;
-      padding: 7px 15px; }
+      padding: 7px 15px;
+      cursor: pointer; }
     .container-model .containerInfo .fas {
       padding-right: 6px; }
   .container-model .buttonCross {
-    margin: 10px; }
+    margin: 10px;
+    cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */
