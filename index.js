@@ -43,17 +43,13 @@ import Modale from "./components/Modale.mjs";
                     let isSerie = this.getAttribute('data-key-serie')
                     var format
                     if (isSerie == "true") {
-                        format = await fetchSerie(id)
+                        let serie = format = await fetchSerie(id)
+                        let containerSerieNetflix = document.getElementsByClassName('movies__container--movie__netflix')[0]
+                        containerSerieNetflix.innerHTML += Modale(serie)
+                        
                     } else {
-                        format = await fetchMovie(id)
+                        let movie = await fetchMovie(id)
                     }
-                    let parent = this.parentElement.parentElement.innerHTML = Modale(format)
-                    console.log(parent)
-                    let buttonCross = document.getElementsByClassName('buttonCross')[0]
-                    console.log(buttonCross)
-                    buttonCross.addEventListener('click', () => {
-                        let containerModel = document.getElementsByClassName('container-model')[0].remove()
-                    })
                 })
             })
         }
@@ -66,3 +62,12 @@ import Modale from "./components/Modale.mjs";
     display(fetchByGenreMovies, document.getElementsByClassName("movies__container--movie")[3], 'backdrop', 35)
     display(fetchByGenreMovies, document.getElementsByClassName("movies__container--movie")[4], 'backdrop', 99)
 })();
+
+/**
+ *                     let parent = this.parentElement.parentElement
+                    parent.innerHTML += Modale(format)
+                    let buttonCross = document.getElementsByClassName('buttonCross')[0]
+                    buttonCross.addEventListener('click', () => {
+                        buttonCross.parentNode.remove()
+                    })
+ */
