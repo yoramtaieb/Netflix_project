@@ -3,8 +3,8 @@ export default function Modale(props) {
     <div class="container-model">
         <div class="container-linear">
             <div class="containerInfo">
-                <h3>${props.original_title}</h3>
-                <p> <span class="rating">Rating ${props.vote_average * 10}%</span> Release Date: ${props.release_date} Runtime: ${props.runtime}</p>
+                <h3>${props.original_title || props.original_name}</h3>
+                <p> <span class="rating">Rating ${props.vote_average * 10}%</span> Release Date: ${props.release_date || props.first_air_date} Runtime: ${props.runtime || props.episode_run_time[0]}m</p>
                 <p class="paraDescription">${props.overview}</p>
                     <div class="containerButtons">
                         <button id="buttonPlay"><i class="fas fa-play"></i>Play</button>

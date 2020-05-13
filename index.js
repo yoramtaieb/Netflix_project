@@ -41,17 +41,39 @@ import Modale from "./components/Modale.mjs";
                 elm.addEventListener('click', async function() {
                     let id = this.getAttribute('data-key-id')
                     let isSerie = this.getAttribute('data-key-serie')
-                    var format
+                    
                     if (isSerie == "true") {
-                        let serie = await fetchSerie(id)
-                        let containerSerieNetflix = document.getElementsByClassName('movies__container--movie__netflix')[0]
-                        let div = document.createElement('div')
-                        div.innerHTML = Modale(serie)
-                        containerSerieNetflix.after(div)
-                        // elm.removeEventListener('click')
-                    } else {
                         let nbDiv = document.getElementsByClassName('js-nb')
-                        console.log(nbDiv)
+                        if (nbDiv.length < 1) {                            
+                            let serie = await fetchSerie(id)                        
+                            let containerSerieNetflix = document.getElementsByClassName('movies__container--movie__netflix')[0]
+                            let div = document.createElement('div')
+                            div.classList.add('js-nb')
+                            div.innerHTML = Modale(serie)
+                            containerSerieNetflix.after(div)
+                            let buttonCross = document.getElementsByClassName('buttonCross')[0]
+                            buttonCross.addEventListener('click', function() {
+                                buttonCross.parentElement.remove()
+                            })
+                            let bgModal = document.getElementsByClassName('container-model')[0]
+                            bgModal.style.backgroundImage = `url(https://image.tmdb.org/t/p/original//${serie.backdrop_path})`                        
+                        } else {
+                            let removeSerie = document.getElementsByClassName('js-nb')[0].remove()
+                            let serie = await fetchSerie(id)
+                            let containerSerieNetflix = document.getElementsByClassName('movies__container--movie__netflix')[0]
+                            let div = document.createElement('div')
+                            div.classList.add('js-nb')
+                            div.innerHTML = Modale(serie)
+                            containerSerieNetflix.after(div)
+                            let buttonCross = document.getElementsByClassName('buttonCross')[0]
+                            buttonCross.addEventListener('click', function() {
+                                buttonCross.parentElement.remove()
+                            })
+                            let bgModal = document.getElementsByClassName('container-model')[0]
+                            bgModal.style.backgroundImage = `url(https://image.tmdb.org/t/p/original//${serie.backdrop_path})`   
+                        }                        
+                    } else {
+                        let nbDiv = document.getElementsByClassName('js-nb')                          
                         if (nbDiv.length < 1) {
                             let movie = await fetchMovie(id)
                             let parentMovie = this.parentElement
@@ -59,6 +81,12 @@ import Modale from "./components/Modale.mjs";
                             divMovie.classList.add('js-nb')
                             divMovie.innerHTML = Modale(movie)
                             parentMovie.after(divMovie)
+                            let buttonCross = document.getElementsByClassName('buttonCross')[0]
+                            buttonCross.addEventListener('click', function() {
+                                buttonCross.parentElement.remove()
+                            })
+                            let bgModal = document.getElementsByClassName('container-model')[0]
+                            bgModal.style.backgroundImage = `url(https://image.tmdb.org/t/p/original//${movie.backdrop_path})`
                         } else {
                             document.getElementsByClassName('js-nb')[0].remove()
                             let movie = await fetchMovie(id)
@@ -67,6 +95,12 @@ import Modale from "./components/Modale.mjs";
                             divMovie.classList.add('js-nb')
                             divMovie.innerHTML = Modale(movie)
                             parentMovie.after(divMovie)
+                            let buttonCross = document.getElementsByClassName('buttonCross')[0]
+                            buttonCross.addEventListener('click', function() {
+                                buttonCross.parentElement.remove()
+                            })
+                            let bgModal = document.getElementsByClassName('container-model')[0]
+                            bgModal.style.backgroundImage = `url(https://image.tmdb.org/t/p/original//${movie.backdrop_path})`
                         } 
                     }
                 })
