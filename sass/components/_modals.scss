@@ -9,13 +9,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     .container-linear {
         width: 70%;
-        background: rgb(0,0,0);
-        background: linear-gradient(90deg, rgba(0,0,0,1) 63%, rgba(0,0,0,0.7200956937799043) 88%, rgba(0, 0, 0, 0) 100%);
-
-        .containerInfo { 
+        background: rgb(0, 0, 0);
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 63%, rgba(0, 0, 0, 0.7200956937799043) 88%, rgba(0, 0, 0, 0) 100%);
+        .containerInfo {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -58,7 +56,6 @@
             }
         }
     }
-    
     .buttonCross {
         margin: 10px;
         cursor: pointer;

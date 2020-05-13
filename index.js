@@ -1,5 +1,7 @@
-import { fetchMovie, fetchNetflixOriginals, fetchTrending, fetchTopRated, fetchByGenreMovies } from "./apiService.js";
+import { fetchMovie, fetchNetflixOriginals, fetchTrending, fetchTopRated, fetchByGenreMovies, fetchSerie } from "./apiService.js";
 import Header from "./components/Header.mjs";
+import Modale from "./components/Modale.mjs";
+
 
 (async() => {
     let movie = await fetchMovie(157336);
@@ -7,38 +9,45 @@ import Header from "./components/Header.mjs";
     document.getElementById("header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`;
     var o = 0
 
-    async function display(fun, htmlElemnt, typeImg, parmFun = null){
+    async function display(fun, htmlElemnt, typeImg, parmFun = null) {
         let movies = await fun(parmFun)
         movies = movies.results
 
         htmlElemnt.style.overflow = "auto"
         htmlElemnt.style.display = "flex"
 
-        if(typeImg == 'poster'){
-            for(let i = 0; i < movies.length; i++){
-                
-                if(movies[i].id != 'null'){
+        if (typeImg == 'poster') {
+            for (let i = 0; i < movies.length; i++) {
+
+                if (movies[i].id != 'null') {
                     htmlElemnt.innerHTML += `
-                    <img data-key-id=${movies[i].id} src="https://image.tmdb.org/t/p/original//${movies[i].poster_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="Poster de la série format portrait"/>
+                    <img data-key-id=${movies[i].id} data-key-serie=true src="https://image.tmdb.org/t/p/original//${movies[i].poster_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="Poster de la série format portrait"/>
                 `
                 }
             }
-        }else if(typeImg == 'backdrop'){
-            for(let i = 0; i < movies.length; i++){
-                if(movies[i].id != 'null'){
+        } else if (typeImg == 'backdrop') {
+            for (let i = 0; i < movies.length; i++) {
+                if (movies[i].id != 'null') {
                     htmlElemnt.innerHTML += `
-                    <img data-key-id=${movies[i].id} src="https://image.tmdb.org/t/p/original//${movies[i].backdrop_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="Image de la série format paysage"/>
+                    <img data-key-id=${movies[i].id} data-key-serie=false src="https://image.tmdb.org/t/p/original//${movies[i].backdrop_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="Image de la série format paysage"/>
                 `
                 }
             }
         }
         o++
-        if(o >= 6){
+        if (o >= 6) {
             let images = Array.from(document.querySelectorAll('.movies__container--movie-image'))
-            images.map(function(elm){
-                elm.addEventListener('click',function(){
+            images.map(function(elm) {
+                elm.addEventListener('click', async function() {
                     let id = this.getAttribute('data-key-id')
-                    console.log(id)
+                    let isSerie = this.getAttribute('data-key-serie')
+                    var test
+                    if (isSerie == true) {
+                        test = await fetchSerie(id)
+                    } else {
+                        test = await fetchMovie(id)
+                    }
+                    console.log(test)
                 })
             })
         }

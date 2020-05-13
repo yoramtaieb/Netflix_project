@@ -1,5 +1,5 @@
 export default function Header(props) {
-  return `
+    return `
           <div class="header__container">
             <h1 class="header__container-heading">${props.original_title}</h1>
             <button class="header__container-btnPlay">
