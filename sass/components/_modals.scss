@@ -1,10 +1,12 @@
 .container-model {
-    background-color: blue;
+    background: purple;
     color: white;
     height: 350px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     // display: none;
-
     .containerInfo {
         display: flex;
         flex-direction: column;
@@ -14,25 +16,19 @@
         height: 100%;
         width: 50%;
         row-gap: 1.5em;
-
         h3 {
             font-size: 3rem;
         }
-
         .rating {
             color: green;
             font-size: 1.5rem;
         }
-
         p {
             font-size: 1.5rem;
-
         }
-
         .paraDescription {
             color: rgba(255, 255, 255, 0.427);
         }
-
         #buttonPlay {
             color: white;
             background-color: red;
@@ -41,7 +37,6 @@
             margin-right: 10px;
             padding: 7px 15px;
         }
-
         #buttonPlus {
             color: white;
             background-color: black;
@@ -49,14 +44,8 @@
             border-radius: 2px;
             padding: 7px 15px;
         }
-
         .fas {
             padding-right: 6px;
         }
-
-        
-
     }
-
 }
-
