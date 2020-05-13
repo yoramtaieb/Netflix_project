@@ -310,23 +310,43 @@ html {
 .container-model .containerInfo {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background-color: lightseagreen;
+  justify-content: flex-start;
+  padding-top: 4rem;
+  background-color: black;
   height: 100%;
   width: 50%;
-  row-gap: 5em;
+  row-gap: 1.5em;
 }
 .container-model .containerInfo h3 {
   font-size: 3rem;
-  padding-bottom: 0.5%;
 }
 .container-model .containerInfo .rating {
   color: green;
   font-size: 1.5rem;
-  padding-bottom: 0.5%;
 }
 .container-model .containerInfo p {
-  font-size: 1rem;
+  font-size: 1.5rem;
+}
+.container-model .containerInfo .paraDescription {
+  color: rgba(255, 255, 255, 0.427);
+}
+.container-model .containerInfo #buttonPlay {
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 2px;
+  margin-right: 10px;
+  padding: 7px 15px;
+}
+.container-model .containerInfo #buttonPlus {
+  color: white;
+  background-color: black;
+  border: 1px solid rgba(255, 255, 255, 0.427);
+  border-radius: 2px;
+  padding: 7px 15px;
+}
+.container-model .containerInfo .fas {
+  padding-right: 6px;
 }
 
 /*# sourceMappingURL=style.css.map */
