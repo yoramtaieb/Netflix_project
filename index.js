@@ -50,12 +50,24 @@ import Modale from "./components/Modale.mjs";
                         containerSerieNetflix.after(div)
                         // elm.removeEventListener('click')
                     } else {
-                        let movie = await fetchMovie(id)
-                        let containerMovieNetflix = document.getElementsByClassName('movies__container--movie')[0]
-                        console.log(containerMovieNetflix)
-                        let divMovie = document.createElement('div')
-                        divMovie.innerHTML = Modale(movie)
-                        containerMovieNetflix.after(divMovie)
+                        let nbDiv = document.getElementsByClassName('js-nb')
+                        console.log(nbDiv)
+                        if (nbDiv.length < 1) {
+                            let movie = await fetchMovie(id)
+                            let parentMovie = this.parentElement
+                            let divMovie = document.createElement('div')
+                            divMovie.classList.add('js-nb')
+                            divMovie.innerHTML = Modale(movie)
+                            parentMovie.after(divMovie)
+                        } else {
+                            document.getElementsByClassName('js-nb')[0].remove()
+                            let movie = await fetchMovie(id)
+                            let parentMovie = this.parentElement
+                            let divMovie = document.createElement('div')
+                            divMovie.classList.add('js-nb')
+                            divMovie.innerHTML = Modale(movie)
+                            parentMovie.after(divMovie)
+                        } 
                     }
                 })
             })
@@ -69,7 +81,6 @@ import Modale from "./components/Modale.mjs";
     display(fetchByGenreMovies, document.getElementsByClassName("movies__container--movie")[3], 'backdrop', 35)
     display(fetchByGenreMovies, document.getElementsByClassName("movies__container--movie")[4], 'backdrop', 99)
 })();
-
 /**
  *                     let parent = this.parentElement.parentElement
                     parent.innerHTML += Modale(format)
