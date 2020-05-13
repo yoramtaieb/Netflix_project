@@ -301,4 +301,32 @@ html {
   }
 }
 
+.container-model {
+  background-color: blue;
+  color: white;
+  height: 350px;
+  width: 100%;
+}
+.container-model .containerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: lightseagreen;
+  height: 100%;
+  width: 50%;
+  row-gap: 5em;
+}
+.container-model .containerInfo h3 {
+  font-size: 3rem;
+  padding-bottom: 0.5%;
+}
+.container-model .containerInfo .rating {
+  color: green;
+  font-size: 1.5rem;
+  padding-bottom: 0.5%;
+}
+.container-model .containerInfo p {
+  font-size: 1rem;
+}
+
 /*# sourceMappingURL=style.css.map */
