@@ -45,8 +45,10 @@ import Modale from "./components/Modale.mjs";
                     if (isSerie == "true") {
                         let serie = format = await fetchSerie(id)
                         let containerSerieNetflix = document.getElementsByClassName('movies__container--movie__netflix')[0]
-                        containerSerieNetflix.innerHTML += Modale(serie)
-                        
+                        let div = document.createElement('div')
+                        div.innerHTML = Modale(serie)
+                        containerSerieNetflix.after(div)
+
                     } else {
                         let movie = await fetchMovie(id)
                     }
