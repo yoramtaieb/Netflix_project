@@ -41,13 +41,19 @@ import Modale from "./components/Modale.mjs";
                 elm.addEventListener('click', async function() {
                     let id = this.getAttribute('data-key-id')
                     let isSerie = this.getAttribute('data-key-serie')
-                    var test
-                    if (isSerie == true) {
-                        test = await fetchSerie(id)
+                    var format
+                    if (isSerie == "true") {
+                        format = await fetchSerie(id)
                     } else {
-                        test = await fetchMovie(id)
+                        format = await fetchMovie(id)
                     }
-                    console.log(test)
+                    let parent = this.parentElement.parentElement.innerHTML = Modale(format)
+                    console.log(parent)
+                    let buttonCross = document.getElementsByClassName('buttonCross')[0]
+                    console.log(buttonCross)
+                    buttonCross.addEventListener('click', () => {
+                        let containerModel = document.getElementsByClassName('container-model')[0].remove()
+                    })
                 })
             })
         }
