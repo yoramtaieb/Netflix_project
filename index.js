@@ -43,14 +43,19 @@ import Modale from "./components/Modale.mjs";
                     let isSerie = this.getAttribute('data-key-serie')
                     var format
                     if (isSerie == "true") {
-                        let serie = format = await fetchSerie(id)
+                        let serie = await fetchSerie(id)
                         let containerSerieNetflix = document.getElementsByClassName('movies__container--movie__netflix')[0]
                         let div = document.createElement('div')
                         div.innerHTML = Modale(serie)
                         containerSerieNetflix.after(div)
-
+                        // elm.removeEventListener('click')
                     } else {
                         let movie = await fetchMovie(id)
+                        let containerMovieNetflix = document.getElementsByClassName('movies__container--movie')[0]
+                        console.log(containerMovieNetflix)
+                        let divMovie = document.createElement('div')
+                        divMovie.innerHTML = Modale(movie)
+                        containerMovieNetflix.after(divMovie)
                     }
                 })
             })
