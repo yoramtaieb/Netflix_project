@@ -105,6 +105,12 @@ import Modale from "./components/Modale.mjs";
                     }
                 })
             })
+
+
+            document.getElementsByClassName('navigationcontainer--leftinput')[0].addEventListener('input', 
+             function(){
+                console.log('ok')
+            })
         }
     }
 
