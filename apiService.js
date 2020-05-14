@@ -44,8 +44,8 @@ export async function fetchByGenreMovies(genre) {
     return genreMovies;
 }
 
-export default async function fetchSerche(query){
-    const url =`https://api.themoviedb.org/3/search/movie?api_key=617f779f9850bfb3355824689e154920&language=en-US&query=${query}&page=1&include_adult=false`
+export async function fetchSearch(query){
+    const url =`https://api.themoviedb.org/3/search/multi?api_key=617f779f9850bfb3355824689e154920&query=${query}&include_adult=false`
      let res = await fetch(url)
      let queryMovies = await res.json()
      return queryMovies

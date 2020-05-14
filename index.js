@@ -1,4 +1,4 @@
-import { fetchMovie, fetchNetflixOriginals, fetchTrending, fetchTopRated, fetchByGenreMovies, fetchSerie } from "./apiService.js";
+import { fetchMovie, fetchNetflixOriginals, fetchTrending, fetchTopRated, fetchByGenreMovies, fetchSerie, fetchSearch} from "./apiService.js";
 import Header from "./components/Header.mjs";
 import Modale from "./components/Modale.mjs";
 
@@ -109,12 +109,20 @@ import Modale from "./components/Modale.mjs";
             var timerId;
             var searchBoxDom = document.getElementsByClassName('navigation__container--left__input')[0];
             console.log(searchBoxDom)
-
             // This represents a very heavy method. Which takes a lot of time to execute
-            function makeAPICall() {
-                console.log('ok')
-                let test = await fetchSerche(query);
-                console.log(test)
+            async function makeAPICall() {
+                // console.log('ok')
+                let test = await fetchSearch(searchBoxDom.value);
+                test = test.results
+                let searchContainer = document.getElementsByClassName('search-container')[0]
+                for (let i = 0; i < test.length; i++){
+                    searchContainer.innerHTML += `
+                    <img data-key-id=${test[i].id} data-key-serie=true src="https://image.tmdb.org/t/p/original//${test[i].poster_path}" class="search-movie-poster" onerror="this.style.display='none'" alt="${test[i].original_title || test[i].original_name}"/>
+                    `
+                    
+                
+                }
+
             }
 
             // Debounce function: Input as function which needs to be debounced and delay is the debounced time in milliseconds
@@ -129,10 +137,8 @@ import Modale from "./components/Modale.mjs";
             // Event listener on the input box
             searchBoxDom.addEventListener('input', function() {
 
-
                 debounceFunction(makeAPICall, 1000)
             })
-
         }
     }
 
