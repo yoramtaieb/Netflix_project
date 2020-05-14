@@ -1,7 +1,7 @@
 .header {
     background-color: $color-background;
     display: flex;
-    height: 65rem;
+    height: 100rem;
     background-size: cover;
     background-position: center;
     @include media(phone) {

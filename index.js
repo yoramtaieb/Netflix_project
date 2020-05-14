@@ -108,19 +108,18 @@ import Modale from "./components/Modale.mjs";
             
             var timerId;
             var searchBoxDom = document.getElementsByClassName('navigation__container--left__input')[0];
-            console.log(searchBoxDom)
+            var searchContainer = document.getElementsByClassName('search-container')[0]
+            // console.log(searchBoxDom)
             // This represents a very heavy method. Which takes a lot of time to execute
             async function makeAPICall() {
                 // console.log('ok')
                 let test = await fetchSearch(searchBoxDom.value);
                 test = test.results
-                let searchContainer = document.getElementsByClassName('search-container')[0]
+                searchContainer.innerHTML = ''
                 for (let i = 0; i < test.length; i++){
                     searchContainer.innerHTML += `
                     <img data-key-id=${test[i].id} data-key-serie=true src="https://image.tmdb.org/t/p/original//${test[i].poster_path}" class="search-movie-poster" onerror="this.style.display='none'" alt="${test[i].original_title || test[i].original_name}"/>
                     `
-                    
-                
                 }
 
             }
@@ -136,8 +135,17 @@ import Modale from "./components/Modale.mjs";
 
             // Event listener on the input box
             searchBoxDom.addEventListener('input', function() {
-
-                debounceFunction(makeAPICall, 1000)
+                if (searchBoxDom.value.length >= 1) {
+                    debounceFunction(makeAPICall, 300)
+                    searchContainer.style.display = 'flex'
+                    document.getElementById('header').style.display = 'none'
+                    document.getElementsByClassName('movies')[0].style.display = 'none'
+                } else {
+                    searchContainer.innerHTML = ''
+                    searchContainer.style.display = 'none'
+                    document.getElementById('header').style.display = 'flex'
+                    document.getElementsByClassName('movies')[0].style.display = 'block'
+                }
             })
         }
     }
