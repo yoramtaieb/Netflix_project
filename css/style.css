@@ -184,7 +184,10 @@ html {
   position: fixed;
   background-color: #111111;
   width: 100vw;
-  padding: 10vh 4rem 4rem 4rem;
+  height: 100vh;
+  padding: 20vh 4rem 4rem 4rem;
+  border: 1px solid red;
+  overflow: scroll;
 }
 .search-container .search-movie-poster {
   width: 230px;

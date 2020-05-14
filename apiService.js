@@ -31,7 +31,7 @@ export async function fetchTrending() {
 }
 
 export async function fetchTopRated() {
-    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=617f779f9850bfb3355824689e154920&page=1`
+    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=617f779f9850bfb3355824689e154920`
     let res = await fetch(url);
     let topRated = await res.json();
     return topRated;
