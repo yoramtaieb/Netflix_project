@@ -21,7 +21,7 @@ import Modale from "./components/Modale.mjs";
 
                 if (movies[i].id != 'null') {
                     htmlElemnt.innerHTML += `
-                    <img data-key-id=${movies[i].id} data-key-serie=true src="https://image.tmdb.org/t/p/original//${movies[i].poster_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="Poster de la série format portrait"/>
+                    <img data-key-id=${movies[i].id} data-key-serie=true src="https://image.tmdb.org/t/p/original//${movies[i].poster_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="${movies[i].original_title || movies[i].original_name}"/>
                 `
                 }
             }
@@ -29,7 +29,7 @@ import Modale from "./components/Modale.mjs";
             for (let i = 0; i < movies.length; i++) {
                 if (movies[i].id != 'null') {
                     htmlElemnt.innerHTML += `
-                    <img data-key-id=${movies[i].id} data-key-serie=false src="https://image.tmdb.org/t/p/original//${movies[i].backdrop_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="Image de la série format paysage"/>
+                    <img data-key-id=${movies[i].id} data-key-serie=false src="https://image.tmdb.org/t/p/original//${movies[i].backdrop_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="${movies[i].original_title || movies[i].original_name}"/>
                 `
                 }
             }
