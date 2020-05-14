@@ -105,12 +105,34 @@ import Modale from "./components/Modale.mjs";
                     }
                 })
             })
+            
+            var timerId;
+            var searchBoxDom = document.getElementsByClassName('navigation__container--left__input')[0];
+            console.log(searchBoxDom)
 
-
-            document.getElementsByClassName('navigationcontainer--leftinput')[0].addEventListener('input', 
-             function(){
+            // This represents a very heavy method. Which takes a lot of time to execute
+            function makeAPICall() {
                 console.log('ok')
+                let test = await fetchSerche(query);
+                console.log(test)
+            }
+
+            // Debounce function: Input as function which needs to be debounced and delay is the debounced time in milliseconds
+            var debounceFunction = function(func, delay) {
+                // Cancels the setTimeout method execution
+                clearTimeout(timerId)
+
+                // Executes the func after delay time.
+                timerId = setTimeout(func, delay)
+            }
+
+            // Event listener on the input box
+            searchBoxDom.addEventListener('input', function() {
+
+
+                debounceFunction(makeAPICall, 1000)
             })
+
         }
     }
 
