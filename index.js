@@ -7,7 +7,8 @@ import Modale from "./components/Modale.mjs";
     let movie = await fetchMovie(157336);
     document.getElementById("header").innerHTML = Header(movie);
     document.getElementById("header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`;
-    var o = 0
+    
+    var nbAppelDisplay = 0
 
     async function display(fun, htmlElemnt, typeImg, parmFun = null) {
         let movies = await fun(parmFun)
@@ -19,23 +20,30 @@ import Modale from "./components/Modale.mjs";
         if (typeImg == 'poster') {
             for (let i = 0; i < movies.length; i++) {
 
-                if (movies[i].id != 'null') {
+                if (movies[i].poster_path != 'null') {
                     htmlElemnt.innerHTML += `
                     <img data-key-id=${movies[i].id} data-key-serie=true src="https://image.tmdb.org/t/p/original//${movies[i].poster_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="${movies[i].original_title || movies[i].original_name}"/>
                 `
+                } else {
+                    continue
                 }
             }
         } else if (typeImg == 'backdrop') {
             for (let i = 0; i < movies.length; i++) {
-                if (movies[i].id != 'null') {
+                if (movies[i].backdrop_path != 'null') {
                     htmlElemnt.innerHTML += `
                     <img data-key-id=${movies[i].id} data-key-serie=false src="https://image.tmdb.org/t/p/original//${movies[i].backdrop_path}" class="movies__container--movie-image" onerror="this.style.display='none'" alt="${movies[i].original_title || movies[i].original_name}"/>
                 `
+                } else {
+                    continue
                 }
             }
         }
-        o++
-        if (o >= 6) {
+
+        nbAppelDisplay++
+        if (nbAppelDisplay >= 6) {
+
+            // Display le modal
             let images = Array.from(document.querySelectorAll('.movies__container--movie-image'))
             images.map(function(elm) {
                 elm.addEventListener('click', async function() {
@@ -51,6 +59,8 @@ import Modale from "./components/Modale.mjs";
                             div.classList.add('js-nb')
                             div.innerHTML = Modale(serie)
                             containerSerieNetflix.after(div)
+
+                            // Button Cross
                             let buttonCross = document.getElementsByClassName('buttonCross')[0]
                             buttonCross.addEventListener('click', function() {
                                 buttonCross.parentElement.remove()
@@ -106,10 +116,11 @@ import Modale from "./components/Modale.mjs";
                 })
             })
             
+            // Recherche
             var timerId;
             var searchBoxDom = document.getElementsByClassName('navigation__container--left__input')[0];
             var searchContainer = document.getElementsByClassName('search-container')[0]
-            // console.log(searchBoxDom)
+            
             // This represents a very heavy method. Which takes a lot of time to execute
             async function makeAPICall() {
                 // console.log('ok')
@@ -157,11 +168,3 @@ import Modale from "./components/Modale.mjs";
     display(fetchByGenreMovies, document.getElementsByClassName("movies__container--movie")[3], 'backdrop', 35)
     display(fetchByGenreMovies, document.getElementsByClassName("movies__container--movie")[4], 'backdrop', 99)
 })();
-/**
- *                     let parent = this.parentElement.parentElement
-                    parent.innerHTML += Modale(format)
-                    let buttonCross = document.getElementsByClassName('buttonCross')[0]
-                    buttonCross.addEventListener('click', () => {
-                        buttonCross.parentNode.remove()
-                    })
- */
